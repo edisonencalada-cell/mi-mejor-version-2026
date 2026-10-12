@@ -1,0 +1,8 @@
+{
+  "appId": "com.edisonencalada.mimejorversion",
+  "appName": "Mi Mejor Versión 2026",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

@@ -36,3 +36,14 @@ Los datos viven en IndexedDB **en ese navegador/dispositivo**, no se sincronizan
 
 ## Desarrollo local
 Sirve estos archivos desde un servidor HTTP, por ejemplo `python -m http.server 8000`; abre `http://localhost:8000`. No abras `index.html` desde `file://` porque los service workers requieren origen seguro.
+
+## APK Android directamente desde GitHub Actions (sin Netlify)
+Este repositorio incluye `.github/workflows/android-apk.yml`, que crea una APK de prueba de Android mediante Capacitor en los servidores de GitHub.
+
+1. Sube **todos los archivos, incluida la carpeta oculta `.github`**, a la raíz de la rama `main`.
+2. Abre tu repositorio > **Actions** > **Crear APK Android** > **Run workflow** > **Run workflow**.
+3. Cuando termine con marca verde, entra en la ejecución, baja a **Artifacts** y descarga **Mi-Mejor-Version-2026-APK**.
+4. Descomprime el ZIP descargado para obtener `app-debug.apk`; transfiérelo al Android e instálalo autorizando esa instalación si el sistema lo pide.
+5. Es una APK **debug de pruebas**, no preparada ni firmada para publicar en Google Play. Para Play hace falta compilar y firmar una versión release/AAB.
+
+**Importante:** el Android SDK compila en GitHub Actions, no dentro de la web de GitHub; los pasos del workflow necesitan conexión y pueden fallar si GitHub cambia las herramientas. Los datos locales almacenados en la web no migran automáticamente a la APK: exporta e importa una copia de seguridad.
